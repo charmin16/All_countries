@@ -1,23 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import {BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
+import RestCountries from './components/RestCountries';
+import Header from './components/Header';
+import Filter from './components/Filter';
+// import Error from './components/Error';
+import SingleCountry from './components/SingleCountry';
+
+
+// import ContextTrial from './contextreducers/ContextTrial';
+
+
 
 function App() {
+
+  const [darkMode, setDarkMode] = useState(true)
+
+  const changeMode = () => {
+    setDarkMode(!darkMode)
+    console.log(darkMode)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkMode ? 'darkkMode' : 'lightMode'}>
+      <Router>
+        <Header changeMode={changeMode} darkMode={darkMode} />
+        {/* <Filter /> */}
+        <Routes>
+          <Route path='/' element={<RestCountries />} /> 
+          {/* <Route path='*' element={<Error />} /> */}
+          <Route path='/:name' element={<SingleCountry />} />
+        </Routes>
+      </Router>
+     
+      
     </div>
   );
 }
