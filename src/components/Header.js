@@ -8,9 +8,9 @@ const Header = ({ changeMode, darkMode }) => {
             <p className='text-2xl font-bold'>Where in the world?</p>
         {darkMode ? <div>
           {/* <i class="fa-regular fa-lightbulb"></i> */}
-          <p onClick={changeMode} className='cursor-pointer text-xl'>Light Mode</p>
+          <p onClick={changeMode} className='cursor-pointer text-xl'><i class="fa-regular fa-sun"></i></p>
           </div> :
-          <p onClick={changeMode} className='cursor-pointer text-xl'>Dark Mode</p>}
+          <p onClick={changeMode} className='cursor-pointer text-xl'><i class="fa-solid fa-sun"></i></p>}
         </div>
     </div>
   )
